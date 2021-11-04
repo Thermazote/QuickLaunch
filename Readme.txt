@@ -27,7 +27,7 @@ draw
 control
 panel
 ctrl
-#Ютуб
+#Youtube
 https://www.youtube.com
 youtube
 yt
