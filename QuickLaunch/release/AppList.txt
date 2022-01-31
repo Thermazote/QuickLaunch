@@ -1,0 +1,20 @@
+#Word
+"C:\Program Files\Microsoft Office\Office16\WINWORD.EXE"
+word
+docx
+#PowerPoint
+"C:\Program Files\Microsoft Office\Office16\POWERPNT.EXE"
+powerpoint
+power point
+presentations
+ppt
+#Excel
+"C:\Program Files\Microsoft Office\Office16\EXCEL.EXE"
+excel
+tables
+xls
+#YouTube
+"https://youtube.com"
+youtube
+yt
+videos
