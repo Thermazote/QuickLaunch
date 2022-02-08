@@ -45,7 +45,6 @@ void MainWindow::on_AppKey_returnPressed()
         }
         else {
             QProcess process;
-            qDebug() << this->args;
             process.startDetached(this->path, this->args);
         }
     }
