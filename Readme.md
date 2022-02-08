@@ -5,7 +5,7 @@ You can set a list of phrases for a specific action. This is configured in the "
 For quick run of this app you can create shortcut on the taskbar and call it with win + 1 key combination.
 For closing app you can use escape button or press enter with an empty text line.
 
-__Structure of the AppList.txt:__
+__Structure of the AppList.txt:__  
 #Displayed action title  
 path or link  
 -argument 1  
