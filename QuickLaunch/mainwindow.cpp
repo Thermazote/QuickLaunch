@@ -45,6 +45,7 @@ void MainWindow::on_AppKey_returnPressed()
         }
         else {
             QProcess process;
+            qDebug() << this->args;
             process.startDetached(this->path, this->args);
         }
     }
@@ -73,6 +74,7 @@ void MainWindow::on_AppKey_textChanged()
             line = file.readLine();
             line.chop(2);
             path = line;
+            args.clear();
         }
         else if (line[0] == '-') {
             line.remove(0,1);
