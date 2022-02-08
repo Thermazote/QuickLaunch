@@ -3,10 +3,9 @@
 #include <QProcess>
 #include <QFile>
 #include <QKeyEvent>
-#include <QTextStream>
 #include <QMessageBox>
-#include <QDebug>
 #include <QDesktopServices>
+#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     file.setFileName("Applist.txt");
     setWindowIcon(QIcon("icon.png"));
-    this->setWindowTitle("Quick launch");
+    this->setWindowTitle("Launch");
     if (!file.open(QIODevice::ReadOnly))
     {
         QMessageBox::information(0, "Error opening file", file.errorString());
@@ -32,7 +31,7 @@ MainWindow::~MainWindow()
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
     if (e->key() == Qt::Key_Escape)
-    {;
+    {
         QCoreApplication::quit();
     }
 }
@@ -40,57 +39,52 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
 
 void MainWindow::on_AppKey_returnPressed()
 {
-    if (!path.isEmpty())
-    {
-        if (path.contains("http"))
-        {
-            path.chop(1);
-            path.remove("\"");
-            QDesktopServices::openUrl(QUrl(path));
-            QCoreApplication::quit();
+    if (!this->path.isEmpty()) {
+        if (this->path.startsWith("https://")) {
+            QDesktopServices::openUrl(QUrl(this->path));
         }
-        else
-        {
-            QString program = path;
-            QProcess *myProcess = new QProcess(this);
-            myProcess->startDetached(program);
-            QCoreApplication::quit();
+        else {
+            QProcess process;
+            process.startDetached(this->path, this->args);
         }
     }
-    else
-        QCoreApplication::quit();
+    QCoreApplication::quit();
 }
 
-void MainWindow::on_AppKey_textChanged(const QString &arg1)
+void MainWindow::on_AppKey_textChanged()
 {
-    QString Name;
-    QStringList list;
-    QString string;
+    QString title;
+    QString path;
+    QString line;
+    QStringList args;
     bool isFound = false;
-    file.open(QIODevice::ReadOnly);
-    while(!file.atEnd() && !isFound)
-    {
-        string = file.readLine();
-        string.chop(1);
-        if (string[0] == '#')
-        {
-            Name = string.remove(0,1);
-            string = file.readLine();
-            string.chop(1);
-            path = string;
-        }
-        if (string.startsWith(ui->AppKey->text(), Qt::CaseInsensitive))
-            isFound = true;
-    }
 
-    if (isFound == false || ui->AppKey->text().isEmpty())
-    {
-        Name.clear();
-        path.clear();
+    file.open(QIODevice::ReadOnly);
+
+    ui->AppName->clear();
+    this->path.clear();
+    this->args.clear();
+
+    while(!file.atEnd() && !isFound) {
+        line = file.readLine();
+        line.chop(2);
+        if (line[0] == '#') {
+            title = line.remove(0,1);
+            line = file.readLine();
+            line.chop(2);
+            path = line;
+        }
+        else if (line[0] == '-') {
+            line.remove(0,1);
+            args.append(line);
+        }
+        else if (line.startsWith(ui->AppKey->text(), Qt::CaseInsensitive) && !(ui->AppKey->text() == "")) {
+            isFound = true;
+            this->path = path;
+            this->args = args;
+            ui->AppName->setText(title);
+        }
     }
 
     file.close();
-    ui->AppName->setText(Name);
-
-
 }

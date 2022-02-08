@@ -5,16 +5,21 @@ docx
 #PowerPoint
 "C:\Program Files\Microsoft Office\Office16\POWERPNT.EXE"
 powerpoint
-power point
-presentations
 ppt
 #Excel
 "C:\Program Files\Microsoft Office\Office16\EXCEL.EXE"
 excel
-tables
 xls
 #YouTube
-"https://youtube.com"
+https://youtube.com
 youtube
 yt
-videos
+#Notepad++
+C:\Program Files\Notepad++\notepad++.exe
+notepad++
+txt
+#Configuration
+C:\Program Files\Notepad++\notepad++.exe
+-C:\Users\admin\Documents\QuickLaunch\release\AppList.txt
+config
+cfg

@@ -21,11 +21,12 @@ private slots:
 
     void on_AppKey_returnPressed();
 
-    void on_AppKey_textChanged(const QString &arg1);
+    void on_AppKey_textChanged();
 
 private:
     Ui::MainWindow *ui;
     QFile file;
     QString path;
+    QStringList args;
 };
 #endif // MAINWINDOW_H
