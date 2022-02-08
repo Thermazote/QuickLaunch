@@ -7,9 +7,9 @@ For closing app you can use escape button or press enter with an empty text line
 
 Structure of the AppList.txt:
 
-'#'<Displayed action title>
-<path or link>
--<argument 1>
-<alias 1>
-...
+#<Displayed action title>  
+<path or link>  
+-<argument 1>  
+<alias 1>  
+\...  
 <alias n>
