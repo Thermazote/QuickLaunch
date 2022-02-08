@@ -16,6 +16,6 @@ alias 1
 alias n
 
 __Remarks:__
-1. Do not quote path and link.  
+1. Do not enclose in quotation marks path and link.  
 2. Argumets is optional.  
 3. There is one alias at least for each action.  
