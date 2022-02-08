@@ -18,4 +18,4 @@ alias n
 __Remarks:__
 1. Do not enclose path and link in quotation marks.  
 2. Argumet is optional  line.  
-3. There is one alias at least for each action.  
+3. There must be one alias at least for each action.  
